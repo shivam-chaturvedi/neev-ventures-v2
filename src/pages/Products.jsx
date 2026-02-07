@@ -94,7 +94,7 @@ const Products = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mb-12 flex flex-wrap justify-center gap-4"
         >
-          {categories.map((category) => (
+          {productCategories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
