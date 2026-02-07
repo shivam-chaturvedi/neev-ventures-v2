@@ -5,6 +5,34 @@ import { FaPalette, FaCandyCane, FaSpa, FaGift, FaLeaf, FaHeart } from 'react-ic
 import { GiCandles, GiIncense, GiSparkles } from 'react-icons/gi'
 import { HiSparkles } from 'react-icons/hi'
 
+const productShowcase = [
+  {
+    src: '/products/product-1.jpg',
+    title: 'Natural Holi Colors',
+    body: 'Hand-ground, organic pigments that celebrate the festival without chemicals.',
+  },
+  {
+    src: '/products/product-2.jpg',
+    title: 'Herbal Candles',
+    body: 'Soy wax candles infused with spices sourced directly from partner villages.',
+  },
+  {
+    src: '/products/product-3.jpg',
+    title: 'Fragrant Incense',
+    body: 'Traditional incense sticks blended with regional botanicals.',
+  },
+  {
+    src: '/products/product-4.jpg',
+    title: 'Curated Gift Sets',
+    body: 'Story-rich boxes that pair colors, candles, and soaps for celebrations.',
+  },
+  {
+    src: '/products/product-5.png',
+    title: 'Organic Soaps',
+    body: 'Cold-processed bars made with medicinal herbs and natural oils.',
+  },
+]
+
 const ProductsPreview = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -119,6 +147,30 @@ const ProductsPreview = () => {
           ))}
         </div>
 
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {productShowcase.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.1 + index * 0.05, duration: 0.5 }}
+              className="relative overflow-hidden rounded-3xl border border-neev-blue/30 shadow-2xl"
+            >
+              <img
+                src={item.src}
+                alt={item.title}
+                className="w-full h-72 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white space-y-1">
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <p className="text-sm text-white/80">{item.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -152,4 +204,3 @@ const ProductsPreview = () => {
 }
 
 export default ProductsPreview
-

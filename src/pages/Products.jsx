@@ -1,61 +1,67 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SEO from '../components/SEO'
-import { FaShoppingBag, FaPalette, FaGift } from 'react-icons/fa'
-import { GiCandles, GiIncense, GiFlowerEmblem } from 'react-icons/gi'
+import { FaShoppingBag, FaPalette } from 'react-icons/fa'
+import { GiCandles, GiIncense } from 'react-icons/gi'
 import { HiSparkles } from 'react-icons/hi'
+
+const productCategories = [
+  { id: 'all', name: 'All Products', icon: <FaShoppingBag /> },
+  { id: 'holi', name: 'Holi Colors', icon: <FaPalette /> },
+  { id: 'candles', name: 'Candles', icon: <GiCandles /> },
+  { id: 'incense', name: 'Incense', icon: <GiIncense /> },
+  { id: 'gift', name: 'Gift Sets', icon: <HiSparkles /> },
+]
+
+const productData = [
+  {
+    id: 1,
+    name: 'Natural Holi Colors',
+    category: 'holi',
+    price: '₹950',
+    description: 'Hand-ground pigments in festive, non-toxic hues.',
+    image: '/products/product-1.jpg',
+  },
+  {
+    id: 2,
+    name: 'Herbal Candles',
+    category: 'candles',
+    price: '₹1200',
+    description: 'Soy wax candles scented with local spices and herbs.',
+    image: '/products/product-2.jpg',
+  },
+  {
+    id: 3,
+    name: 'Fragrant Incense',
+    category: 'incense',
+    price: '₹650',
+    description: 'Slow-burning incense sticks blended with regional botanicals.',
+    image: '/products/product-3.jpg',
+  },
+  {
+    id: 4,
+    name: 'Celebration Gift Box',
+    category: 'gift',
+    price: '₹2500',
+    description: 'Curated set pairing colors, candles, and soaps for gifting.',
+    image: '/products/product-4.jpg',
+  },
+  {
+    id: 5,
+    name: 'Organic Soaps',
+    category: 'gift',
+    price: '₹850',
+    description: 'Cold-pressed soaps infused with medicinal herbs.',
+    image: '/products/product-5.png',
+  },
+]
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  // Placeholder products - will be filled with real data
-  const categories = [
-    { id: 'all', name: 'All Products', icon: <FaShoppingBag /> },
-    { id: 'holi', name: 'Holi Colors', icon: <FaPalette /> },
-    { id: 'candles', name: 'Candles', icon: <GiCandles /> },
-    { id: 'incense', name: 'Incense', icon: <GiFlowerEmblem /> },
-    { id: 'other', name: 'Other', icon: <HiSparkles /> },
-  ]
-
-  // Placeholder product data
-  const placeholderProducts = [
-    {
-      id: 1,
-      name: 'Natural Holi Colors Set',
-      category: 'holi',
-      price: 'TBD',
-      icon: <FaPalette className="text-6xl" />,
-      description: 'Eco-friendly, skin-safe colors',
-    },
-    {
-      id: 2,
-      name: 'Handmade Soy Candles',
-      category: 'candles',
-      price: 'TBD',
-      icon: <GiCandles className="text-6xl" />,
-      description: 'Hand-poured with natural ingredients',
-    },
-    {
-      id: 3,
-      name: 'Traditional Incense Sticks',
-      category: 'incense',
-      price: 'TBD',
-      icon: <GiIncense className="text-6xl" />,
-      description: 'Authentic fragrances',
-    },
-    {
-      id: 4,
-      name: 'Festival Gift Box',
-      category: 'other',
-      price: 'TBD',
-      icon: <FaGift className="text-6xl" />,
-      description: 'Curated selection of products',
-    },
-  ]
-
-  const filteredProducts = selectedCategory === 'all' 
-    ? placeholderProducts 
-    : placeholderProducts.filter(p => p.category === selectedCategory)
+  const filteredProducts = selectedCategory === 'all'
+    ? productData
+    : productData.filter((product) => product.category === selectedCategory)
 
   return (
     <>
@@ -114,22 +120,25 @@ const Products = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="glass-effect rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-neev-gold/20 hover:border-neev-gold/40 transform hover:-translate-y-2"
             >
-              {/* Product Image Placeholder */}
-              <div className="h-64 bg-gradient-to-br from-neev-teal/20 via-neev-pink/20 to-neev-orange/20 flex items-center justify-center text-neev-gold">
-                {product.icon}
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 px-6 pb-4 text-white">
+                  <p className="text-sm uppercase tracking-[0.4em] mb-1">Product Spotlight</p>
+                  <h3 className="text-2xl font-semibold">{product.name}</h3>
+                </div>
               </div>
 
-              {/* Product Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-display font-bold mb-2 text-gray-800">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 mb-4">{product.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-neev-gold">
-                    ₹{product.price}
-                  </span>
-                  <button className="px-4 py-2 bg-gradient-to-r from-neev-gold to-neev-orange text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-sm">
+              <div className="p-6 space-y-4">
+                <p className="text-gray-600 text-lg">{product.description}</p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <span className="text-2xl font-bold text-neev-gold">{product.price}</span>
+                  <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-neev-blue to-neev-orange text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300">
                     Add to Cart
                   </button>
                 </div>
@@ -164,4 +173,3 @@ const Products = () => {
 }
 
 export default Products
-

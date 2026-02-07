@@ -12,7 +12,7 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen gradient-bg-creative">
+      <div className="min-h-screen bg-[#fbe7c5]">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,4 +30,3 @@ function App() {
 }
 
 export default App
-

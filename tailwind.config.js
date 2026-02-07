@@ -19,13 +19,13 @@ export default {
         'neev-burgundy': '#800020',
       },
       fontFamily: {
-        'display': ['Lobster', 'cursive'],
-        'lobster': ['Lobster', 'cursive'],
-        'dancing': ['Dancing Script', 'cursive'],
-        'pacifico': ['Pacifico', 'cursive'],
-        'satisfy': ['Satisfy', 'cursive'],
-        'courgette': ['Courgette', 'cursive'],
-        'body': ['Poppins', 'sans-serif'],
+        'display': ['Lato', 'sans-serif'],
+        'lobster': ['Lato', 'sans-serif'],
+        'dancing': ['Lato', 'sans-serif'],
+        'pacifico': ['Lato', 'sans-serif'],
+        'satisfy': ['Lato', 'sans-serif'],
+        'courgette': ['Lato', 'sans-serif'],
+        'body': ['Lato', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
@@ -52,5 +52,3 @@ export default {
   },
   plugins: [],
 }
-
-

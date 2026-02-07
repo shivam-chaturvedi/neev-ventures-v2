@@ -1,76 +1,13 @@
 import { motion } from 'framer-motion'
 import { FaArrowRight, FaHeart, FaUsers, FaHandHoldingHeart, FaStar } from 'react-icons/fa'
-import { GiVillage, GiSparkles, GiFlowerEmblem } from 'react-icons/gi'
-import { HiSparkles } from 'react-icons/hi'
-
+import { GiVillage } from 'react-icons/gi'
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, 180, 360],
-            x: [0, 100, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-20 right-20 w-96 h-96 bg-neev-blue/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-neev-orange/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.4, 1],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neev-pink/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.1, 1.5, 1.1],
-            x: [-50, 50, -50],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-40 left-1/3 w-72 h-72 bg-neev-mustard/25 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            y: [50, -50, 50],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-40 right-1/3 w-80 h-80 bg-neev-rust/20 rounded-full blur-3xl"
-        />
-      </div>
+    <section
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/home/hero.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-[#fbe7c5]/80" aria-hidden="true" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-20">
@@ -79,22 +16,6 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Floating decorative elements */}
-          <motion.div
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute -top-10 left-10 opacity-20"
-          >
-            <HiSparkles className="text-6xl text-neev-mustard" />
-          </motion.div>
-          <motion.div
-            animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            className="absolute -top-5 right-10 opacity-20"
-          >
-            <GiFlowerEmblem className="text-6xl text-neev-pink" />
-          </motion.div>
-          
           <motion.h1 
             className="text-6xl md:text-8xl font-lobster font-bold mb-6"
             initial={{ scale: 0.5, opacity: 0 }}
@@ -121,7 +42,7 @@ const Hero = () => {
           >
             <motion.a
               href="#mission"
-              className="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neev-pink via-neev-orange to-neev-mustard text-white rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
+            className="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neev-blue via-neev-orange to-neev-gold text-white rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all duration-300"
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -156,11 +77,11 @@ const Hero = () => {
               <span className="font-semibold text-gray-700">15+ Villages</span>
             </motion.div>
             <motion.div 
-              className="flex items-center gap-2 px-6 py-3 glass-effect rounded-full border-2 border-neev-pink/60 shadow-lg"
+              className="flex items-center gap-2 px-6 py-3 glass-effect rounded-full border-2 border-neev-gold/60 shadow-lg"
               whileHover={{ scale: 1.1, rotate: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <FaUsers className="text-2xl text-neev-pink" />
+              <FaUsers className="text-2xl text-neev-gold" />
               <span className="font-semibold text-gray-700">100+ Women Empowered</span>
             </motion.div>
             <motion.div 
@@ -182,24 +103,9 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-8 h-12 border-2 border-neev-pink rounded-full flex justify-center shadow-lg">
-            <motion.div 
-              className="w-2 h-4 bg-gradient-to-b from-neev-pink to-neev-orange rounded-full mt-2"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
       </div>
     </section>
   )
 }
 
 export default Hero
-

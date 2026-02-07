@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+const logoSrc = '/logo.png'
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
@@ -13,6 +15,7 @@ const Navbar = () => {
     { name: 'Gallery', path: '/gallery' },
     { name: 'Resources', path: '/resources' },
     { name: 'Contact', path: '/contact' },
+    { name: "Women's Stories", path: '/#womens-stories', anchor: true },
   ]
 
   return (
@@ -20,37 +23,47 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 2 }}
-              className="text-3xl font-lobster font-bold gradient-text"
-            >
+          <Link to="/" className="flex items-center space-x-4">
+            <motion.img
+              src={logoSrc}
+              alt="Neev Ventures logo"
+              className="w-20 h-20 object-contain"
+              whileHover={{ scale: 1.1, rotate: 3 }}
+            />
+            <div className="text-3xl font-semibold tracking-wide text-gray-800">
               Neev Ventures
-            </motion.div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <motion.div key={link.path} whileHover={{ scale: 1.1 }}>
-                <Link
-                  to={link.path}
-                  className={`relative text-lg font-semibold transition-colors duration-300 ${
-                    location.pathname === link.path
-                      ? 'text-neev-pink'
-                      : 'text-gray-700 hover:text-neev-orange'
-                  }`}
-                >
-                  {link.name}
-                  {location.pathname === link.path && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-neev-pink via-neev-orange to-neev-blue rounded-full"
-                    />
+            {navLinks.map((link) => {
+              const isActive = !link.anchor && location.pathname === link.path
+              const textClasses = `relative text-lg font-semibold transition-colors duration-300 ${
+                isActive ? 'text-neev-pink' : 'text-gray-700 hover:text-neev-orange'
+              }`
+              return (
+                <motion.div key={link.path} whileHover={{ scale: 1.1 }}>
+                  {link.anchor ? (
+                    <a href={link.path} className={textClasses}>
+                      {link.name}
+                    </a>
+                  ) : (
+                    <>
+                      <Link to={link.path} className={textClasses}>
+                        {link.name}
+                      </Link>
+                      {isActive && (
+                        <motion.div
+                          layoutId="underline"
+                          className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-neev-pink via-neev-orange to-neev-blue rounded-full"
+                        />
+                      )}
+                    </>
                   )}
-                </Link>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </div>
 
           {/* Mobile menu button */}
@@ -83,20 +96,32 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden pb-4"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block py-3 px-4 rounded-lg mb-2 transition-colors ${
-                  location.pathname === link.path
-                    ? 'bg-neev-gold/20 text-neev-gold font-semibold'
-                    : 'text-gray-700 hover:bg-neev-orange/10'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const baseClasses = `block py-3 px-4 rounded-lg mb-2 transition-colors ${
+                location.pathname === link.path
+                  ? 'bg-neev-gold/20 text-neev-gold font-semibold'
+                  : 'text-gray-700 hover:bg-neev-orange/10'
+              }`
+              return link.anchor ? (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={baseClasses}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={baseClasses}
+                >
+                  {link.name}
+                </Link>
+              )
+            })}
           </motion.div>
         )}
       </div>
@@ -105,4 +130,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-

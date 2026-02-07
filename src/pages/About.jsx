@@ -187,6 +187,61 @@ const About = () => {
           </div>
         </section>
 
+        {/* Our Impact */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-neev-blue/5 to-neev-mustard/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              <div className="space-y-6">
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="text-4xl font-display font-bold gradient-text"
+                >
+                  Our Impact in Use
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="text-lg text-gray-700 leading-relaxed"
+                >
+                  We channel investments into financial literacy, sustainable products, and digital enablement so
+                  that every village uses their own strengths to generate dignified income. The women we work with
+                  are now leading trainings, managing inventories, and shipping products around the world.
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <p className="text-sm uppercase tracking-[0.5em] text-gray-500 mb-2">Featured Impact</p>
+                  <p className="text-2xl font-semibold text-gray-800">Green Holi colors · 120+ women trained</p>
+                </motion.div>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                className="rounded-3xl overflow-hidden border border-neev-gold/30 shadow-2xl"
+              >
+                <img
+                  src="/about/impact.jpg"
+                  alt="Impact of Neev Ventures"
+                  className="w-full h-80 object-cover"
+                  loading="lazy"
+                />
+                <div className="p-6 bg-white">
+                  <p className="text-gray-600 text-sm">
+                    Sharing financial coaching and market-ready techniques across villages so each SHG
+                    owns its growth story.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Our Values */}
         <section ref={ref2} className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-neev-orange/5 to-neev-pink/5">
           <div className="max-w-7xl mx-auto">
@@ -341,5 +396,3 @@ const About = () => {
 }
 
 export default About
-
-

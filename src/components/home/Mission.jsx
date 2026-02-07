@@ -1,6 +1,19 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
+const missionImages = [
+  {
+    src: '/mission/mission-1.jpg',
+    title: 'Listening Trips',
+    caption: 'Building trust with SHGs through storytelling rounds',
+  },
+  {
+    src: '/mission/mission-2.jpg',
+    title: 'Hands-on Training',
+    caption: 'Women experimenting with colors, candles, and herbal soaps',
+  },
+]
+
 const Mission = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -63,6 +76,30 @@ const Mission = () => {
               We believe that empowerment is not charity: it is the power to create, own, and lead.
             </motion.p>
           </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {missionImages.map((image) => (
+              <motion.div
+                key={image.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="relative rounded-3xl overflow-hidden border-2 border-neev-blue/30 shadow-lg"
+              >
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-80 object-cover transition duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="text-2xl font-semibold">{image.title}</h4>
+                  <p className="text-sm text-white/80">{image.caption}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Decorative elements */}
@@ -94,5 +131,4 @@ const Mission = () => {
 }
 
 export default Mission
-
 

@@ -3,6 +3,25 @@ import { useInView } from 'react-intersection-observer'
 import { FaHeart, FaUsers } from 'react-icons/fa'
 import { HiSparkles } from 'react-icons/hi'
 
+const storyProfiles = [
+  {
+    name: 'Radha Devi',
+    role: 'Community Trainer',
+    location: 'Rampur, Bihar',
+    quote:
+      '“I teach dozens of women how to turn raw turmeric into Holi colors that sell across the district.”',
+    image: '/women-stories/story-1.jpg',
+  },
+  {
+    name: 'Sunita Sharma',
+    role: 'Candle Specialist',
+    location: 'Kheri Fields, Uttar Pradesh',
+    quote:
+      '“We pour each candle with herbs that remind us of celebrations at home—now the income is also ours.”',
+    image: '/women-stories/story-2.jpg',
+  },
+]
+
 const WomenStories = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -10,7 +29,10 @@ const WomenStories = () => {
   })
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-neev-pink/5 via-neev-mustard/5 to-neev-blue/5 relative overflow-hidden">
+    <section
+      id="womens-stories"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-neev-pink/5 via-neev-mustard/5 to-neev-blue/5 relative overflow-hidden"
+    >
       {/* Animated background shapes */}
       <motion.div
         animate={{ scale: [1, 1.3, 1], x: [0, 50, 0] }}
@@ -82,6 +104,37 @@ const WomenStories = () => {
             and achievements will be featured here. Stay tuned to meet the changemakers! <HiSparkles className="text-neev-pink" />
           </p>
 
+          <div className="mt-12 grid gap-6">
+            {storyProfiles.map((story, index) => (
+              <motion.div
+                key={story.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
+                className="group bg-white/80 rounded-3xl shadow-2xl border border-neev-gold/30 overflow-hidden flex flex-col"
+              >
+                <div className="h-56 overflow-hidden">
+                  <img
+                    src={story.image}
+                    alt={story.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6 flex flex-col gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.5em] text-neev-gold font-semibold">
+                      Women of Neev
+                    </p>
+                    <h4 className="text-2xl font-semibold text-gray-800">{story.name}</h4>
+                    <p className="text-sm text-gray-600">{story.role} · {story.location}</p>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">{story.quote}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
             {/* Decorative Grid for Future Photos */}
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
               {[...Array(4)].map((_, i) => (
@@ -125,5 +178,3 @@ const WomenStories = () => {
 }
 
 export default WomenStories
-
-

@@ -1,122 +1,100 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import SEO from '../components/SEO'
-import { FaImages, FaPlay, FaCamera, FaPalette, FaHandsHelping, FaIndustry } from 'react-icons/fa'
-import { MdWorkspaces, MdCelebration } from 'react-icons/md'
+import { FaImages, FaCamera, FaPalette, FaHandsHelping, FaIndustry } from 'react-icons/fa'
+import { MdCelebration } from 'react-icons/md'
 import { GiVillage } from 'react-icons/gi'
+
+const imagePaths = Array.from({ length: 34 }, (_, index) => `/gallery/image-${index + 1}.jpg`)
+
+const categoryDetails = {
+  products: {
+    label: 'Products',
+    icon: <FaPalette />,
+    color: 'from-neev-pink to-neev-coral',
+    titles: ['Organic Holi Colors', 'Handmade Candles', 'Traditional Incense'],
+    descriptions: [
+      'Vibrant, eco-friendly colors made from natural ingredients',
+      'Soy candles poured with herbal oils and fragrant spices',
+      'Incense sticks blended with authentic regional aromas',
+    ],
+  },
+  women: {
+    label: 'Our Women',
+    icon: <FaHandsHelping />,
+    color: 'from-neev-teal to-neev-gold',
+    titles: ['Lakshmi at Work', 'Radha\'s Success Story', 'Faces of Empowerment'],
+    descriptions: [
+      'Preparing natural dyes with traditional methods',
+      'From homemaker to confident entrepreneur',
+      'Building community resilience, one step at a time',
+    ],
+  },
+  events: {
+    label: 'Events',
+    icon: <MdCelebration />,
+    color: 'from-neev-orange to-neev-gold',
+    titles: ['SHG Meeting', 'Product Launch Event', 'Village Celebration'],
+    descriptions: [
+      'Monthly gatherings to celebrate milestones',
+      'Showcasing new lines to partners and patrons',
+      'Sharing achievements with the entire community',
+    ],
+  },
+  villages: {
+    label: 'Villages',
+    icon: <GiVillage />,
+    color: 'from-neev-olive to-neev-teal',
+    titles: ['Rampur Village', 'Pipra Sunrise', 'Kheri Fields'],
+    descriptions: [
+      'One of our partner villages in Bihar',
+      'Early morning harvesting and making raw materials',
+      'Families collaborating to craft their future',
+    ],
+  },
+  process: {
+    label: 'Process',
+    icon: <FaIndustry />,
+    color: 'from-neev-gold to-neev-teal',
+    titles: ['Color Making Process', 'Candle Production', 'Packaging Stories'],
+    descriptions: [
+      'Step-by-step creation of natural Holi colors',
+      'Behind the scenes of our candle production',
+      'Label design, photography, and storytelling',
+    ],
+  },
+}
+
+const categoryList = [
+  { id: 'all', name: 'All', icon: <FaImages /> },
+  ...Object.entries(categoryDetails).map(([id, data]) => ({
+    id,
+    name: data.label,
+    icon: data.icon,
+  })),
+]
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  const categories = [
-    { id: 'all', name: 'All', icon: <FaImages /> },
-    { id: 'workshops', name: 'Workshops', icon: <MdWorkspaces /> },
-    { id: 'products', name: 'Products', icon: <FaPalette /> },
-    { id: 'women', name: 'Our Women', icon: <FaHandsHelping /> },
-    { id: 'events', name: 'Events', icon: <MdCelebration /> },
-    { id: 'villages', name: 'Villages', icon: <GiVillage /> },
-    { id: 'process', name: 'Process', icon: <FaIndustry /> },
-  ]
-
-  // Placeholder gallery items with descriptions
-  const galleryItems = [
-    {
-      id: 1,
-      category: 'workshops',
-      title: 'Financial Literacy Workshop',
-      description: 'Women learning about digital banking and UPI payments',
-      type: 'image',
-      color: 'from-neev-gold to-neev-orange',
-    },
-    {
-      id: 2,
-      category: 'products',
-      title: 'Organic Holi Colors',
-      description: 'Vibrant, eco-friendly colors made from natural ingredients',
-      type: 'image',
-      color: 'from-neev-pink to-neev-coral',
-    },
-    {
-      id: 3,
-      category: 'women',
-      title: 'Lakshmi at Work',
-      description: 'Preparing natural dyes with traditional methods',
-      type: 'image',
-      color: 'from-neev-teal to-neev-olive',
-    },
-    {
-      id: 4,
-      category: 'workshops',
-      title: 'Entrepreneurship Training',
-      description: 'Learning product packaging and branding techniques',
-      type: 'video',
-      color: 'from-neev-orange to-neev-gold',
-    },
-    {
-      id: 5,
-      category: 'products',
-      title: 'Handmade Candles',
-      description: 'Soy candles crafted with love and care',
-      type: 'image',
-      color: 'from-neev-gold to-neev-teal',
-    },
-    {
-      id: 6,
-      category: 'events',
-      title: 'SHG Meeting',
-      description: 'Monthly gathering of self-help group members',
-      type: 'image',
-      color: 'from-neev-coral to-neev-pink',
-    },
-    {
-      id: 7,
-      category: 'villages',
-      title: 'Rampur Village',
-      description: 'One of our partner villages in Bihar',
-      type: 'image',
-      color: 'from-neev-olive to-neev-teal',
-    },
-    {
-      id: 8,
-      category: 'process',
-      title: 'Color Making Process',
-      description: 'Step-by-step creation of natural Holi colors',
-      type: 'video',
-      color: 'from-neev-pink to-neev-orange',
-    },
-    {
-      id: 9,
-      category: 'women',
-      title: 'Radha\'s Success Story',
-      description: 'From homemaker to successful entrepreneur',
-      type: 'image',
-      color: 'from-neev-teal to-neev-gold',
-    },
-    {
-      id: 10,
-      category: 'products',
-      title: 'Traditional Incense',
-      description: 'Hand-rolled incense sticks with authentic fragrances',
-      type: 'image',
-      color: 'from-neev-orange to-neev-coral',
-    },
-    {
-      id: 11,
-      category: 'events',
-      title: 'Product Launch Event',
-      description: 'Celebrating the launch of our new product line',
-      type: 'image',
-      color: 'from-neev-gold to-neev-pink',
-    },
-    {
-      id: 12,
-      category: 'process',
-      title: 'Candle Making',
-      description: 'Behind the scenes of our candle production',
-      type: 'video',
-      color: 'from-neev-teal to-neev-coral',
-    },
-  ]
+  const galleryItems = useMemo(() => {
+    const keys = Object.keys(categoryDetails)
+    return imagePaths.map((src, index) => {
+      const categoryKey = keys[index % keys.length]
+      const detail = categoryDetails[categoryKey]
+      const title = detail.titles[index % detail.titles.length]
+      const description = detail.descriptions[index % detail.descriptions.length]
+      return {
+        id: index + 1,
+        category: categoryKey,
+        title,
+        description,
+        type: 'image',
+        color: detail.color,
+        src,
+      }
+    })
+  }, [])
 
   const filteredItems = selectedCategory === 'all'
     ? galleryItems
@@ -159,7 +137,7 @@ const Gallery = () => {
             className="mb-12"
           >
             <div className="flex flex-wrap justify-center gap-4">
-              {categories.map((category, index) => (
+              {categoryList.map((category, index) => (
                 <motion.button
                   key={category.id}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -190,45 +168,28 @@ const Gallery = () => {
                 className="group cursor-pointer"
               >
                 <div className="glass-effect rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-neev-gold/20 hover:border-neev-gold/40 transform hover:-translate-y-2">
-                  {/* Image/Video Placeholder */}
-                  <div className={`relative h-64 bg-gradient-to-br ${item.color} flex items-center justify-center overflow-hidden`}>
-                    {/* Overlay pattern */}
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="absolute inset-0" style={{
-                        backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-                        backgroundSize: '20px 20px',
-                      }} />
-                    </div>
-                    
-                    {/* Icon based on type */}
-                    <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
-                      {item.type === 'video' ? (
-                        <div className="flex flex-col items-center text-white">
-                          <FaPlay className="text-6xl mb-2" />
-                          <span className="text-sm font-semibold uppercase tracking-wider">Video</span>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col items-center text-white">
-                          <FaImages className="text-6xl mb-2" />
-                          <span className="text-sm font-semibold uppercase tracking-wider">Photo</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Category Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-lg">
-                        {categories.find(c => c.id === item.category)?.name}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.8) 100%)',
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
+                    <div className="absolute inset-0 flex flex-col justify-end px-6 pb-6 text-white space-y-2">
+                      <span className="text-xs uppercase tracking-[0.4em] text-white/70">
+                        {categoryDetails[item.category]?.label || 'Gallery'}
                       </span>
+                      <h3 className="text-2xl font-semibold">{item.title}</h3>
+                      <p className="text-sm text-white/80">{item.description}</p>
+                      <div className={`h-1 w-full rounded-full bg-gradient-to-r ${item.color}`} />
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-neev-gold transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600">{item.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -293,5 +254,3 @@ const Gallery = () => {
 }
 
 export default Gallery
-
-
