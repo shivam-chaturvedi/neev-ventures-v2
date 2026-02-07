@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-gray-800;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-neev-pink via-neev-orange to-neev-mustard bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-blue {
+    @apply bg-gradient-to-r from-neev-blue via-neev-sky to-neev-pink bg-clip-text text-transparent;
+  }
+  
+  .gradient-bg-creative {
+    @apply bg-gradient-to-br from-neev-pink/20 via-neev-orange/20 to-neev-blue/20;
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+  
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+
