@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { FaShoppingBag, FaHandHoldingHeart, FaUsers } from 'react-icons/fa'
+import { FaShoppingBag, FaHandHoldingHeart } from 'react-icons/fa'
 import { HiSparkles } from 'react-icons/hi'
 
 const CallToAction = () => {
@@ -85,34 +85,6 @@ const CallToAction = () => {
             </motion.div>
           </div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-          >
-            {[
-              { icon: <FaUsers />, number: "100+", label: "Women Empowered" },
-              { icon: <FaShoppingBag />, number: "1000+", label: "Products Made" },
-              { icon: <FaHandHoldingHeart />, number: "15+", label: "Villages Reached" },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="glass-effect rounded-2xl p-6 border-2 border-white/40 shadow-xl"
-                whileHover={{ scale: 1.1, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-5xl mb-3 text-white">{stat.icon}</div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-lobster">
-                  {stat.number}
-                </div>
-                <div className="text-lg text-white/90 font-courgette">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -120,4 +92,3 @@ const CallToAction = () => {
 }
 
 export default CallToAction
-

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SEO from '../components/SEO'
-import { FaShoppingBag, FaPalette } from 'react-icons/fa'
+import { FaShoppingBag, FaPalette, FaLeaf } from 'react-icons/fa'
 import { GiCandles, GiIncense } from 'react-icons/gi'
 import { HiSparkles } from 'react-icons/hi'
 
@@ -11,6 +11,7 @@ const productCategories = [
   { id: 'candles', name: 'Candles', icon: <GiCandles /> },
   { id: 'incense', name: 'Incense', icon: <GiIncense /> },
   { id: 'gift', name: 'Gift Sets', icon: <HiSparkles /> },
+  { id: 'patchwork', name: 'Patchwork', icon: <FaLeaf /> },
 ]
 
 const productData = [
@@ -20,7 +21,7 @@ const productData = [
     category: 'holi',
     price: '₹950',
     description: 'Hand-ground pigments in festive, non-toxic hues.',
-    image: '/products/product-1.jpg',
+    image: '/products/holi colors.jpg',
   },
   {
     id: 2,
@@ -28,7 +29,7 @@ const productData = [
     category: 'candles',
     price: '₹1200',
     description: 'Soy wax candles scented with local spices and herbs.',
-    image: '/products/product-2.jpg',
+    image: '/products/candles.jpg',
   },
   {
     id: 3,
@@ -36,7 +37,7 @@ const productData = [
     category: 'incense',
     price: '₹650',
     description: 'Slow-burning incense sticks blended with regional botanicals.',
-    image: '/products/product-3.jpg',
+    image: '/products/Fragrant Incense.png',
   },
   {
     id: 4,
@@ -44,15 +45,15 @@ const productData = [
     category: 'gift',
     price: '₹2500',
     description: 'Curated set pairing colors, candles, and soaps for gifting.',
-    image: '/products/product-4.jpg',
+    image: '/products/Curated Gift Set.jpg',
   },
   {
     id: 5,
-    name: 'Organic Soaps',
-    category: 'gift',
-    price: '₹850',
-    description: 'Cold-pressed soaps infused with medicinal herbs.',
-    image: '/products/product-5.png',
+    name: 'Patchwork',
+    category: 'patchwork',
+    price: '₹1,450',
+    description: 'Hand-stitched patchwork crafted from reclaimed fabrics.',
+    image: '/products/patchwork-2.jpg',
   },
 ]
 

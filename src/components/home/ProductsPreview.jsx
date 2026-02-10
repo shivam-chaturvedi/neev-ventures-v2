@@ -1,35 +1,35 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { FaPalette, FaCandyCane, FaSpa, FaGift, FaLeaf, FaHeart } from 'react-icons/fa'
+import { FaPalette, FaGift, FaLeaf } from 'react-icons/fa'
 import { GiCandles, GiIncense, GiSparkles } from 'react-icons/gi'
 import { HiSparkles } from 'react-icons/hi'
 
 const productShowcase = [
   {
-    src: '/products/product-1.jpg',
+    src: '/products/holi colors.jpg',
     title: 'Natural Holi Colors',
     body: 'Hand-ground, organic pigments that celebrate the festival without chemicals.',
   },
   {
-    src: '/products/product-2.jpg',
+    src: '/products/candles.jpg',
     title: 'Herbal Candles',
     body: 'Soy wax candles infused with spices sourced directly from partner villages.',
   },
   {
-    src: '/products/product-3.jpg',
+    src: '/products/Fragrant Incense.png',
     title: 'Fragrant Incense',
     body: 'Traditional incense sticks blended with regional botanicals.',
   },
   {
-    src: '/products/product-4.jpg',
+    src: '/products/Curated Gift Set.jpg',
     title: 'Curated Gift Sets',
-    body: 'Story-rich boxes that pair colors, candles, and soaps for celebrations.',
+    body: 'Story-rich boxes that pair colors, candles, and patchwork keepsakes for celebrations.',
   },
   {
-    src: '/products/product-5.png',
-    title: 'Organic Soaps',
-    body: 'Cold-processed bars made with medicinal herbs and natural oils.',
+    src: '/products/patchwork-1.jpg',
+    title: 'Patchwork',
+    body: 'Vibrant patchwork stitched from reclaimed fabrics by women artisans.',
   },
 ]
 
@@ -62,20 +62,14 @@ const ProductsPreview = () => {
     {
       name: 'Gift Sets',
       description: 'Curated with care',
-      icon: <FaGift className="text-5xl" />,
+      icon: <FaGift className="text-5xl" />, 
       color: 'from-neev-orange via-neev-pink to-neev-rose',
     },
     {
-      name: 'Organic Soaps',
-      description: 'Pure and natural',
-      icon: <FaSpa className="text-5xl" />,
-      color: 'from-neev-blue via-neev-rust to-neev-burgundy',
-    },
-    {
-      name: 'Handicrafts',
-      description: 'Crafted with tradition',
-      icon: <GiSparkles className="text-5xl" />,
-      color: 'from-neev-pink via-neev-mustard to-neev-blue',
+      name: 'Patchwork',
+      description: 'Hand-stitched textiles',
+      icon: <FaLeaf className="text-5xl" />,
+      color: 'from-neev-rose via-neev-coral to-neev-gold',
     },
   ]
 
