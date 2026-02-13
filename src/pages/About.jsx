@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import SEO from '../components/SEO'
-import { FaUsers, FaLightbulb, FaHeart, FaGlobeAsia, FaHandHoldingHeart } from 'react-icons/fa'
+import { FaUsers, FaLightbulb, FaGlobeAsia, FaHandsHelping } from 'react-icons/fa'
 import { GiVillage } from 'react-icons/gi'
 import { MdGroups, MdOutlineVerified } from 'react-icons/md'
 
@@ -11,7 +11,7 @@ const About = () => {
 
   const values = [
     {
-      icon: <FaHeart className="text-5xl" />,
+      icon: <FaUsers className="text-5xl" />,
       title: 'Empathy & Respect',
       description: 'We listen first, act with compassion, and honor every woman\'s journey.',
       color: 'from-neev-pink to-neev-coral',
@@ -67,9 +67,9 @@ const About = () => {
               className="text-center"
             >
               <div className="flex justify-center mb-6">
-                <div className="p-6 bg-gradient-to-br from-neev-gold to-neev-orange rounded-full shadow-2xl">
-                  <FaHandHoldingHeart className="text-6xl text-white" />
-                </div>
+                  <div className="p-6 bg-gradient-to-br from-neev-gold to-neev-orange rounded-full shadow-2xl">
+                    <FaHandsHelping className="text-6xl text-white" />
+                  </div>
               </div>
               <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 gradient-text">
                 About Neev Ventures
@@ -150,7 +150,7 @@ const About = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="text-4xl font-display font-bold gradient-text"
+                  className="text-4xl font-display font-bold text-[#7C4A10]"
                 >
                   Our Impact in Use
                 </motion.h3>
@@ -161,8 +161,8 @@ const About = () => {
                   className="text-lg text-gray-700 leading-relaxed"
                 >
                   We channel investments into financial literacy, sustainable products, and digital enablement so
-                  that every village uses their own strengths to generate dignified income. The women we work with
-                  are now leading trainings, managing inventories, and shipping products around the world.
+                  that every woman and or SHG  uses their own strengths to generate dignified income. The women we work with
+                  are now handling finances, managing inventories, and shipping products around the world.
                 </motion.p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -185,8 +185,7 @@ const About = () => {
                 />
                 <div className="p-6 bg-white">
                   <p className="text-gray-600 text-sm">
-                    Sharing financial coaching and market-ready techniques across villages so each SHG
-                    owns its growth story.
+                    received youngest enterpreneur mentor award from dr. kiran bedi
                   </p>
                 </div>
               </motion.div>

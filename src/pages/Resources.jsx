@@ -38,12 +38,6 @@ const resourceDocs = [
   },
 ]
 
-const canvaResource = {
-  title: 'Community Stories Deck',
-  description: 'Canva board showcasing women, products, and workshop highlights.',
-  url: 'https://www.canva.com/design/DAGwWkWMhro/view?embed',
-}
-
 const Resources = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('all')
 
@@ -65,35 +59,9 @@ const Resources = () => {
             <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">
               <span className="gradient-text">Resources & Workshops</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Downloadable resources handpicked for SHGs and community leaders.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
+              We provide free access to resources from our financial literacy and entrepreneurship workshops. These materials are available in both English and Hindi to ensure wider reach, inclusivity, and accessibility—so that more individuals and communities can learn, apply, and benefit from these insights in their own entrepreneurial journeys.
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="rounded-3xl border border-neev-pink/30 bg-white/80 shadow-2xl p-8 mb-12 text-center"
-          >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div>
-                <h3 className="text-3xl font-display font-bold text-gray-800 mb-2">
-                  {canvaResource.title}
-                </h3>
-                <p className="text-gray-600 max-w-3xl mx-auto">
-                  {canvaResource.description}
-                </p>
-              </div>
-              <a
-                href={canvaResource.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-neev-blue to-neev-orange text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                View Canva Resource
-              </a>
-            </div>
           </motion.div>
 
           <motion.div

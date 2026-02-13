@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaMoneyBillWave, FaUniversity, FaRocket, FaStar, FaHeart } from 'react-icons/fa'
+import { FaUniversity, FaRocket, FaStar } from 'react-icons/fa'
 import { GiWheat, GiTakeMyMoney, GiGrowth } from 'react-icons/gi'
 
 const pillars = [
   {
     title: 'Economics',
-    image: '/our-model/economics.jpg',
+    images: ['/our-model/economics.jpg'],
     icon: <GiWheat className="text-6xl" />,
     description: 'We start by listening. Every community is unique, and every SHG has its own strengths. So we sit with the women, understand their daily lives, their income needs, and their raw materials around them. From there, we work with them to create beautiful, sustainable products such as holi colours, candles, incense, and much more.',
     highlight: "This pillar isn't just about income. It's about showing women that their skills, their hands, and their resources already hold immense value.",
@@ -14,7 +14,7 @@ const pillars = [
   },
   {
     title: 'Financial Literacy',
-    image: '/our-model/finance.jpg',
+    images: ['/our-model/finance.jpg', '/our-model/finance-2.jpg'],
     icon: <FaUniversity className="text-6xl" />,
     description: 'For many rural women, the world of banking and digital finance can feel distant and complicated. We make it simple, friendly, and hands-on. Through small-group workshops, we help SHG members learn how to use digital payments safely, how to save and borrow confidently, to access government schemes meant for them, how to plan their finances as a group and as individuals.',
     highlight: "This isn't just about money. It's about giving women the freedom to make their own decisions, support their families, and dream bigger.",
@@ -22,7 +22,7 @@ const pillars = [
   },
   {
     title: 'Entrepreneurship',
-    image: '/our-model/entrepreneurship.jpg',
+    images: ['/our-model/entrepreneurship.jpg', '/our-model/entrepreneurship-2.jpg'],
     icon: <FaRocket className="text-6xl" />,
     description: 'Once the products are ready, the next step is to help women present them proudly. We teach simple branding, packaging, and how to build their own product identity. We take photos, design labels, write stories, and help them sell through various online and offline platforms. We also connect SHGs to corporate partners, schools, and NGOs: making sure their products reach the wider world.',
     highlight: "This pillar is about more than sales. It's about women seeing themselves as creators, business owners, and leaders.",
@@ -91,12 +91,19 @@ const OurModel = () => {
             >
               <div className="h-full glass-effect rounded-3xl p-10 shadow-2xl transition-all duration-300 border-2 border-neev-pink/30 hover:border-neev-orange/60 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-neev-orange/10">
                 <div className="mb-6 rounded-3xl overflow-hidden">
-                  <img
-                    src={pillar.image}
-                    alt={`${pillar.title} visual`}
-                    className="w-full h-40 md:h-48 object-cover"
-                    loading="lazy"
-                  />
+                  <div
+                    className={`grid ${pillar.images.length > 1 ? 'grid-cols-2 gap-3' : ''}`}
+                  >
+                    {pillar.images.map((src, idx) => (
+                      <img
+                        key={idx}
+                        src={src}
+                        alt={`${pillar.title} visual ${idx + 1}`}
+                        className="w-full h-40 md:h-48 object-cover rounded-2xl"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
                 </div>
                 {/* Icon */}
                 <motion.div 
@@ -123,7 +130,8 @@ const OurModel = () => {
                 {/* Highlight */}
                 <div className={`mt-6 pt-6 border-t-2 border-neev-pink/30`}>
                   <p className="text-sm italic text-gray-700 font-semibold font-dancing text-lg flex items-start gap-2">
-                    <FaHeart className="text-neev-pink mt-1 flex-shrink-0" /> {pillar.highlight}
+                    <span className="text-neev-pink text-xl leading-none">•</span>
+                    {pillar.highlight}
                   </p>
                 </div>
               </div>

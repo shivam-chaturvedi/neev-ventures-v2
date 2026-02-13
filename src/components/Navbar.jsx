@@ -11,11 +11,12 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
+    { name: 'Our Ventures', path: '/our-ventures' },
     { name: 'Products', path: '/products' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Resources', path: '/resources' },
-    { name: 'Contact', path: '/contact' },
     { name: "Women's Stories", path: '/#womens-stories', anchor: true },
+    { name: 'Contact', path: '/contact' },
   ]
 
   return (

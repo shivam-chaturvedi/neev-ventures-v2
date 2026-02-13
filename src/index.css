@@ -22,7 +22,7 @@
 
 @layer utilities {
   .gradient-text {
-    @apply bg-gradient-to-r from-neev-blue via-neev-orange to-neev-mustard bg-clip-text text-transparent;
+    color: #7C4A10;
   }
   
   .gradient-text-blue {

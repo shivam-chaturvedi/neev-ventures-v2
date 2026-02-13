@@ -63,7 +63,7 @@ const Mission = () => {
             they lack the right support. <span className="font-semibold text-neev-rust">Neev Ventures exists to change the story.</span> Our 
             mission is to help rural women unlock this hidden potential by giving them access to 
             financial tools, hands-on product skills, and entrepreneurial pathways. We work closely 
-            with SHGs to turn everyday materials into sustainable products and to connect them to 
+            with SHGs and Individual Businesses to turn everyday materials into sustainable products and to connect them to 
             real markets, both online and offline.
           </p>
           

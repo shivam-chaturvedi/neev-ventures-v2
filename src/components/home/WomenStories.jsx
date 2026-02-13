@@ -39,8 +39,9 @@ const WomenStories = () => {
           >
             <span className="gradient-text">Women's Stories</span>
           </motion.h2>
-          <p className="text-xl md:text-2xl text-gray-600 font-dancing font-semibold flex items-center justify-center gap-2">
-            The Heart of Our Mission <HiSparkles className="text-neev-pink" />
+          <p className="text-xl md:text-2xl text-gray-600 font-dancing font-semibold flex flex-col gap-2 md:flex-row md:items-center md:justify-center text-center md:text-left">
+            Stories of resilience, learning and growth—told in their words. Through their voices, we celebrate strength, impact and growth.
+            <HiSparkles className="text-neev-pink self-center md:self-auto" />
           </p>
         </motion.div>
 

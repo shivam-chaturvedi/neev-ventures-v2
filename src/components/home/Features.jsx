@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaLeaf, FaHandsHelping, FaGlobeAmericas, FaHeart, FaSeedling, FaUsers } from 'react-icons/fa'
+import { FaLeaf, FaHandsHelping, FaGlobeAmericas, FaSeedling, FaUsers } from 'react-icons/fa'
 import { GiFlowerPot, GiRecycle, GiFlowerEmblem } from 'react-icons/gi'
 import { HiSparkles } from 'react-icons/hi'
 
@@ -33,7 +33,7 @@ const Features = () => {
       bgColor: "bg-neev-mustard/10"
     },
     {
-      icon: <FaHeart className="text-5xl" />,
+      icon: <HiSparkles className="text-5xl" />,
       title: "Made with Love",
       description: "Handcrafted with care and traditional techniques",
       color: "from-neev-rust to-neev-burgundy",
@@ -143,38 +143,9 @@ const Features = () => {
           ))}
         </div>
 
-        {/* Floating icon decorations */}
-        <div className="mt-16 flex justify-center gap-8 flex-wrap">
-          {[
-            { Icon: GiFlowerEmblem, color: 'text-neev-pink' },
-            { Icon: FaLeaf, color: 'text-neev-blue' },
-            { Icon: HiSparkles, color: 'text-neev-mustard' },
-            { Icon: FaHeart, color: 'text-neev-rust' },
-            { Icon: GiFlowerEmblem, color: 'text-neev-orange' },
-            { Icon: FaSeedling, color: 'text-neev-blue' }
-          ].map(({ Icon, color }, index) => (
-            <motion.div
-              key={index}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 10, -10, 0],
-              }}
-              transition={{
-                duration: 3,
-                delay: index * 0.3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className={`text-6xl opacity-60 ${color}`}
-            >
-              <Icon />
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   )
 }
 
 export default Features
-

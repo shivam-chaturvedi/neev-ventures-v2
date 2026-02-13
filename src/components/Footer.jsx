@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { FaHeart } from 'react-icons/fa'
 
 const Footer = () => {
   return (
@@ -77,11 +76,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-neev-blue/30 text-center">
-          <p className="text-lg text-gray-700 font-dancing font-semibold flex items-center justify-center gap-2">
-            © {new Date().getFullYear()} Neev Ventures. All rights reserved. Made with <FaHeart className="text-neev-blue" />
-          </p>
-        </div>
+          <div className="mt-8 pt-8 border-t border-neev-blue/30 text-center">
+            <p className="text-lg text-gray-700 font-dancing font-semibold">
+              © {new Date().getFullYear()} Neev Ventures. All rights reserved. Made with care.
+            </p>
+          </div>
       </div>
     </footer>
   )

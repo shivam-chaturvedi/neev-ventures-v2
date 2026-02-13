@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { FaShoppingBag, FaHandHoldingHeart } from 'react-icons/fa'
+import { FaShoppingBag } from 'react-icons/fa'
 import { HiSparkles } from 'react-icons/hi'
 
 const CallToAction = () => {
@@ -79,7 +79,7 @@ const CallToAction = () => {
                 to="/contact"
                 className="group flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-neev-blue to-neev-sky text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-blue/50 border-2 border-white transition-all duration-300"
               >
-                <FaHandHoldingHeart className="text-2xl group-hover:animate-pulse" />
+                <HiSparkles className="text-2xl group-hover:animate-pulse" />
                 Get Involved
               </Link>
             </motion.div>
