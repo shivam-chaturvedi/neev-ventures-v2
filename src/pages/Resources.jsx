@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SEO from '../components/SEO'
 
+const getOfficeEmbedUrl = (fileUrl) =>
+  `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fileUrl)}`
+
 const pptUrls = [
   'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Copy%20of%20ALL%20ABOUT%20BANKS%20%281%29%20%283%29.pptx',
   'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Neev%20Workshop%201%20%281%29%20%282%29.pptx',
@@ -13,28 +16,75 @@ const resourceDocs = [
     id: 1,
     title: 'All About Banks',
     description: 'Hindi primer explaining how banks, savings, and digital accounts work.',
-    language: 'all',
-    embed: `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
-      pptUrls[0],
-    )}`,
+    language: 'hindi',
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(pptUrls[0]),
   },
   {
     id: 2,
     title: 'Neev Workshop 1 (Set A)',
     description: 'English deck covering branding, storytelling, and packaging.',
     language: 'hindi',
-    embed: `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
-      pptUrls[1],
-    )}`,
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(pptUrls[1]),
   },
   {
     id: 3,
     title: 'Neev Workshop 1 (Set B)',
     description: 'English guide on photography, pricing, and selling online.',
     language: 'english',
-    embed: `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
-      pptUrls[2],
-    )}`,
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(pptUrls[2]),
+  },
+  {
+    id: 5,
+    title: 'UPI Workshop (Hindi)',
+    description: 'Hindi PowerPoint covering the basics of UPI onboarding, safety, and everyday use cases.',
+    language: 'hindi',
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(
+      'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Copy%20of%20UPI%20workshop%20%281%29%20Hindi.pptx',
+    ),
+  },
+  {
+    id: 6,
+    title: 'UPI Workshop (English)',
+    description: 'English version of the UPI workshop with focus on digital payments and security tips.',
+    language: 'english',
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(
+      'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Copy%20of%20UPI%20workshop%20English.pptx',
+    ),
+  },
+  {
+    id: 7,
+    title: 'Government Schemes (Hindi)',
+    description: 'Hindi deck highlighting relevant government schemes for entrepreneurs and artisans.',
+    language: 'hindi',
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(
+      'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Government%20Schemes%20%281%29%20Hindi.pptx',
+    ),
+  },
+  {
+    id: 8,
+    title: 'Government Schemes (English)',
+    description: 'English deck outlining central schemes, eligibility, and how women entrepreneurs can benefit.',
+    language: 'english',
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(
+      'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Government%20Schemes%20%282%29%20English.pptx',
+    ),
+  },
+  {
+    id: 9,
+    title: 'Marketing Workshop (English)',
+    description: 'English presentation on basic marketing tactics for micro-businesses.',
+    language: 'english',
+    format: 'ppt',
+    embed: getOfficeEmbedUrl(
+      'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Marketing%20workshop%20English.pptx',
+    ),
   },
 ]
 
@@ -104,7 +154,9 @@ const Resources = () => {
                       <p className="text-sm text-gray-600">{doc.description}</p>
                     </div>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-neev-gold to-neev-orange uppercase tracking-wider">
-                      {doc.language === 'hindi' ? 'Hindi PPT' : 'English PPT'}
+                      {`${doc.language === 'hindi' ? 'Hindi' : 'English'} ${
+                        doc.format === 'doc' ? 'Document' : 'PPT'
+                      }`}
                     </span>
                   </div>
                   <div className="w-full">
