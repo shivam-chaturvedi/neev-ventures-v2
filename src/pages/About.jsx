@@ -184,7 +184,7 @@ const About = () => {
                   loading="lazy"
                 />
                 <div className="p-6 bg-white">
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-sm capitalize">
                     received youngest enterpreneur mentor award from dr. kiran bedi
                   </p>
                 </div>

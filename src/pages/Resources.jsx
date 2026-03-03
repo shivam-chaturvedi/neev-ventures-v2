@@ -5,11 +5,21 @@ import SEO from '../components/SEO'
 const getOfficeEmbedUrl = (fileUrl) =>
   `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fileUrl)}`
 
+const formatLabels = {
+  ppt: 'PPT',
+  doc: 'Document',
+  canva: 'Canva',
+}
+
 const pptUrls = [
   'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Copy%20of%20ALL%20ABOUT%20BANKS%20%281%29%20%283%29.pptx',
   'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Neev%20Workshop%201%20%281%29%20%282%29.pptx',
   'https://yoaod3ugpbqutyxo.public.blob.vercel-storage.com/neev%20ventures/Neev%20Workshop%201%20%282%29%20%281%29.pptx',
 ]
+
+const canvaViewUrl =
+  'https://www.canva.com/design/DAGwWkWMhro/_6lNFxwTEfKM1S-OKOKV1g/view?utm_content=DAGwWkWMhro&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'
+const canvaEmbedUrl = `${canvaViewUrl}&embed`
 
 const resourceDocs = [
   {
@@ -22,6 +32,15 @@ const resourceDocs = [
   },
   {
     id: 2,
+    title: 'All About Banks (English Canva)',
+    description: 'English version of the “All About Banks” deck via Canva, ready for sharing and reuse.',
+    language: 'english',
+    format: 'canva',
+    embed: canvaEmbedUrl,
+    link: canvaViewUrl,
+  },
+  {
+    id: 3,
     title: 'Neev Workshop 1 (Set A)',
     description: 'English deck covering branding, storytelling, and packaging.',
     language: 'hindi',
@@ -29,7 +48,7 @@ const resourceDocs = [
     embed: getOfficeEmbedUrl(pptUrls[1]),
   },
   {
-    id: 3,
+    id: 4,
     title: 'Neev Workshop 1 (Set B)',
     description: 'English guide on photography, pricing, and selling online.',
     language: 'english',
@@ -155,17 +174,44 @@ const Resources = () => {
                     </div>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-neev-gold to-neev-orange uppercase tracking-wider">
                       {`${doc.language === 'hindi' ? 'Hindi' : 'English'} ${
-                        doc.format === 'doc' ? 'Document' : 'PPT'
+                        formatLabels[doc.format] ?? doc.format
                       }`}
                     </span>
                   </div>
                   <div className="w-full">
-                    <iframe
-                      title={doc.title}
-                      src={doc.embed}
-                      className="w-full h-[650px]"
-                      loading="lazy"
-                    />
+                    {doc.embed ? (
+                      <>
+                        <iframe
+                          title={doc.title}
+                          src={doc.embed}
+                          className="w-full h-[650px]"
+                          loading="lazy"
+                        />
+                        {doc.link && (
+                          <div className="p-6 flex justify-end">
+                            <a
+                              href={doc.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-neev-gold to-neev-orange"
+                            >
+                              Open in Canva
+                            </a>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="p-8 flex justify-center">
+                        <a
+                          href={doc.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-6 py-3 rounded-full bg-gradient-to-r from-neev-gold to-neev-orange text-white font-semibold"
+                        >
+                          Open Resource
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
